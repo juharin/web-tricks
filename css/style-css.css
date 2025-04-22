@@ -1,0 +1,180 @@
+:root {
+    --card-first-position: 20px;
+    --sc-border-radius: 3rem;
+    --perspective: 500px;
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+    --angle: 5deg;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row .col {
+    width: 100%;
+    padding: 10px;
+}
+
+.col .card-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: var(--card-first-position);
+}
+
+.region {
+    position: absolute;
+    width: calc((100% - 2*var(--card-first-position)) / 3);
+    height: calc((100% - 2*var(--card-first-position)) / 3);
+    z-index: 10;
+}
+
+.card-container .region.region1 {
+    top: calc(var(--card-first-position) + 0*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 0*calc((100% - 2*var(--card-first-position)) / 3));
+    border-top-left-radius: var(--sc-border-radius);
+}
+
+.card-container .region.region2 {
+    top: calc(var(--card-first-position) + 0 * calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 1 * calc((100% - 2*var(--card-first-position)) / 3));
+}
+
+.card-container .region.region3 {
+    top: calc(var(--card-first-position) + 0 * calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 2 * calc((100% - 2*var(--card-first-position)) / 3));
+    border-top-right-radius: var(--sc-border-radius);
+}
+
+.card-container .region.region4 {
+    top: calc(var(--card-first-position) + 1*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 0*calc((100% - 2*var(--card-first-position)) / 3));
+}
+
+.card-container .region.region5 {
+    top: calc(var(--card-first-position) + 1*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 1*calc((100% - 2*var(--card-first-position)) / 3));
+}
+
+.card-container .region.region6 {
+    top: calc(var(--card-first-position) + 1*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 2*calc((100% - 2*var(--card-first-position)) / 3));
+}
+
+.card-container .region.region7 {
+    top: calc(var(--card-first-position) + 2*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 0*calc((100% - 2*var(--card-first-position)) / 3));
+    border-bottom-left-radius: var(--sc-border-radius);
+}
+
+.card-container .region.region8 {
+    top: calc(var(--card-first-position) + 2*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 1*calc((100% - 2*var(--card-first-position)) / 3));
+}
+
+.card-container .region.region9 {
+    top: calc(var(--card-first-position) + 2*calc((100% - 2*var(--card-first-position)) / 3));
+    left: calc(var(--card-first-position) + 2*calc((100% - 2*var(--card-first-position)) / 3));
+    border-bottom-right-radius: var(--sc-border-radius);
+}
+
+.card {
+    position: relative;
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+    transition: .5s;
+}
+
+.region1:hover ~ .card {
+    --rotateX: var(--angle);
+    --rotateY: calc(-1*(var(--angle)));
+}
+
+.region2:hover ~ .card {
+    --rotateX: var(--angle);
+}
+
+.region3:hover ~ .card {
+    --rotateX: var(--angle);
+    --rotateY: var(--angle);
+}
+
+.region4:hover ~ .card {
+    --rotateY: calc(-1*(var(--angle)));
+}
+
+.region6:hover ~ .card {
+    --rotateY: var(--angle);
+}
+
+.region7:hover ~ .card {
+    --rotateX: calc(-1*(var(--angle)));
+    --rotateY: calc(-1*(var(--angle)));
+}
+
+.region8:hover ~ .card {
+    --rotateX: calc(-1*(var(--angle)));
+}
+
+.region9:hover ~ .card {
+    --rotateX: calc(-1*(var(--angle)));
+    --rotateY: var(--angle);
+}
+
+.card img {
+    width: 100%;
+    border-radius: var(--sc-border-radius);
+}
+
+.card :is(h1, p) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+}
+
+.card h1 {
+    top: 50%;
+    font-size: 18px;
+}
+
+.card p {
+    top: 60%;
+    font-size: 11px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .row .col {
+        width: 50%;
+    }
+
+    .card h1 {
+        top: 50%;
+        font-size: 22px;
+    }
+    
+    .card p {
+        top: 60%;
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 1180px) {
+    .row .col {
+        width: calc(100%/3);
+    }
+
+    .card h1 {
+        top: 50%;
+        font-size: 22px;
+    }
+    
+    .card p {
+        top: 60%;
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Design Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-js-css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <!-- Popup Menu (moved from header to body to fix stacking context) -->
+    <div class="popup-menu" id="popup-menu">
+        <div class="popup-menu-section">
+            <h3>Menu</h3>
+            <ul class="popup-menu-links">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-palette"></i> Gallery</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> Examples</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Documentation</a></li>
+                <li><a href="#"><i class="fas fa-download"></i> Downloads</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Backdrop for Popup Menu -->
+    <div class="popup-backdrop" id="popup-backdrop"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-container"></div>
+
+    <!-- Navbar -->
+    <header>
+        <div class="container">
+            <div class="header-left">
+                <div class="popup-toggle" id="popup-toggle">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="logo">
+                    <img src="./data/logo-white.svg" alt="DesignLab Logo" class="logo-img logo-dark">
+                    <img src="./data/logo-black.svg" alt="DesignLab Logo" class="logo-img logo-light">
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <div class="search-box-inner">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn">
+                        <i class="far fa-sun"></i>
+                        <i class="far fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Interactive <span class="gradient-text">Design</span> Showcase</h1>
+                <p>Exploring the boundaries of web design with modern HTML, CSS, and JavaScript techniques.</p>
+                <div class="btn-group">
+                    <a href="#features" class="btn primary">Explore Effects</a>
+                    <a href="#" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Interactive <span class="gradient-text">Features</span></h2>
+            <div class="features-grid">
+                <div class="feature-card card-common">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Theme Switching</h3>
+                    <p>Seamlessly switch between dark and light themes with smooth transitions.</p>
+                </div>
+                <div class="feature-card card-common">
+                    <div class="feature-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3>Particle Effects</h3>
+                    <p>Interactive particles that follow your cursor movement across the screen.</p>
+                </div>
+                <div class="feature-card card-common">
+                    <div class="feature-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <h3>Animated Menu</h3>
+                    <p>Smooth, responsive navigation with elegant animations and transitions.</p>
+                </div>
+                <div class="feature-card card-common">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>3D Tilting</h3>
+                    <p>Interactive cards with realistic 3D tilting and lighting effects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Section -->
+    <section id="cards">
+        <div class="container">
+            <h2 class="section-title">Interactive <span class="gradient-text">Cards</span></h2>
+            <div class="cards-grid">
+                <div class="tilt-card card-common">
+                    <div class="card-content">
+                        <h3>Hover Me</h3>
+                        <p>This card has a 3D tilt effect and dynamic lighting.</p>
+                        <a href="#" class="card-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="tilt-card card-common">
+                    <div class="card-content">
+                        <h3>Tilt Effect</h3>
+                        <p>The tilt follows your cursor for an immersive experience.</p>
+                        <a href="#" class="card-btn">Explore</a>
+                    </div>
+                </div>
+                <div class="tilt-card card-common">
+                    <div class="card-content">
+                        <h3>Realistic Shadows</h3>
+                        <p>Dynamic shadows that respond to your movements.</p>
+                        <a href="#" class="card-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Section -->
+    <section id="cards">
+        <div class="container">
+            <h2 class="section-title">JS+CSS <span class="gradient-text">Card</span></h2>
+            <div class="cards-flex">
+                <div class="card">
+                    <div class="card__content">
+                      <div class="card__gloss"></div>
+                      <img
+                        class="card__image"
+                        src="https://images.unsplash.com/photo-1579645899072-e14c6b840afa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                        alt=""
+                      />
+                      <h2 class="card__title">Card Title</h2>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      </p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gradient Borders Section -->
+    <section id="effects">
+        <div class="container">
+            <h2 class="section-title">Gradient <span class="gradient-text">Borders</span></h2>
+            <div class="gradient-boxes">
+                <div class="gradient-border-box card-common">
+                    <div class="box-content">
+                        <h3>Animated Borders</h3>
+                        <p>Border with moving gradient effects</p>
+                    </div>
+                </div>
+                <div class="gradient-border-box card-common">
+                    <div class="box-content">
+                        <h3>Pulsing Glow</h3>
+                        <p>Subtle pulsing light effect</p>
+                    </div>
+                </div>
+                <div class="gradient-border-box card-common">
+                    <div class="box-content">
+                        <h3>Color Shift</h3>
+                        <p>Dynamic color transitions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Ultrared 👋</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/tilt.js"></script>
+    <script src="js/tilt-js-css.js"></script>
+    <script src="js/gradients.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/main.js"></script>
+    <script src="index.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

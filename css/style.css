@@ -1,0 +1,1091 @@
+/* 
+=================================
+  Global Styles & Variables
+=================================
+*/
+:root {
+    /* Light Theme Colors - More dramatic */
+    --light-bg: #f0f4f8;
+    --light-bg-rgb: 240, 244, 248;
+    --light-text: #1a202c;
+    --light-primary: #4263eb;
+    --light-primary-rgb: 66, 99, 235;
+    --light-secondary: #7048e8;
+    --light-secondary-rgb: 112, 72, 232;
+    --light-accent: #e64980;
+    --light-accent-rgb: 230, 73, 128;
+    --light-card-bg: #ffffff;
+    --light-card-shadow: rgba(0, 0, 0, 0.1);
+    --light-hover-shadow: rgba(0, 0, 0, 0.15);
+    --light-border: rgba(0, 0, 0, 0.1);
+    --light-spotlight: rgba(var(--light-secondary-rgb), 0.15); /* New variable for light mode spotlight */
+    
+    /* Dark Theme Colors */
+    --dark-bg: #070a12;
+    --dark-bg-rgb: 7, 10, 18;
+    --dark-text: #f1f5f9;
+    --dark-primary: #3b82f6;
+    --dark-primary-rgb: 59, 130, 246;
+    --dark-secondary: #9333ea;
+    --dark-secondary-rgb: 147, 51, 234;
+    --dark-accent: #ec4899;
+    --dark-accent-rgb: 236, 72, 153;
+    --dark-card-bg: #0f172a;
+    --dark-card-shadow: rgba(255, 255, 255, 0.15); /* Increased opacity for more visible shadow */
+    --dark-hover-shadow: rgba(255, 255, 255, 0.25); /* Stronger hover shadow for dark mode */
+    --dark-glow: rgba(var(--dark-primary-rgb), 0.4); /* More intense glow effect */
+    --dark-border: rgba(255, 255, 255, 0.08);
+    --dark-spotlight: rgba(var(--dark-primary-rgb), 0.15);
+    
+    /* Gradients - More vibrant */
+    --gradient-primary: linear-gradient(135deg, #4263eb, #7048e8, #e64980);
+    --gradient-secondary: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6);
+    
+    /* Common Values */
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --container-width: 1200px;
+    
+    /* Border Width - Narrower */
+    --gradient-border-width: 1px;
+    --gradient-card-border-width: 0.5px; /* Even narrower border for cards */
+    --button-border-width: 1px;
+    
+    /* Spotlight opacity */
+    --light-spotlight-opacity: 0.2;
+    --dark-spotlight-opacity: 0.1;
+}
+
+/* 
+=================================
+  Theme Styles
+=================================
+*/
+.light-theme {
+    --bg-color: var(--light-bg);
+    --bg-color-rgb: var(--light-bg-rgb);
+    --text-color: var(--light-text);
+    --primary-color: var(--light-primary);
+    --primary-color-rgb: var(--light-primary-rgb);
+    --secondary-color: var(--light-secondary);
+    --secondary-color-rgb: var(--light-secondary-rgb);
+    --accent-color: var(--light-accent);
+    --accent-color-rgb: var(--light-accent-rgb);
+    --card-bg: var(--light-card-bg);
+    --card-shadow: var(--light-card-shadow);
+    --border-color: var(--light-border);
+    --spotlight-color: var(--light-spotlight);
+}
+
+.dark-theme {
+    --bg-color: var(--dark-bg);
+    --bg-color-rgb: var(--dark-bg-rgb);
+    --text-color: var(--dark-text);
+    --primary-color: var(--dark-primary);
+    --primary-color-rgb: var(--dark-primary-rgb);
+    --secondary-color: var(--dark-secondary);
+    --secondary-color-rgb: var(--dark-secondary-rgb);
+    --accent-color: var(--dark-accent);
+    --accent-color-rgb: var(--dark-accent-rgb);
+    --card-bg: var(--dark-card-bg);
+    --card-shadow: var(--dark-card-shadow);
+    --border-color: var(--dark-border);
+    --spotlight-color: var(--dark-spotlight);
+}
+
+/* 
+=================================
+  Base Styles
+=================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative; /* Ensure body acts as positioning context for particles */
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+/* 
+=================================
+  Typography
+=================================
+*/
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+h1, h2 {
+    font-family: 'Pridi', serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 
+=================================
+  Theme Toggle
+=================================
+*/
+.theme-toggle {
+    position: relative;
+    margin-left: 20px;
+    z-index: 100;
+}
+
+#theme-toggle-btn {
+    background: var(--card-bg);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#theme-toggle-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+#theme-toggle-btn i {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    position: absolute;
+    transition: all var(--transition-speed) ease;
+}
+
+.dark-theme #theme-toggle-btn i.fa-sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dark-theme #theme-toggle-btn i.fa-moon {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.light-theme #theme-toggle-btn i.fa-moon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.light-theme #theme-toggle-btn i.fa-sun {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* 
+=================================
+  Particles Container
+=================================
+*/
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* 
+=================================
+  Header & Navigation
+=================================
+*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 0;
+    background-color: rgba(var(--bg-color-rgb), 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+/* Header Left Side - Logo and Ellipsis */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.logo {
+    margin-left: 0;
+}
+
+.logo-img {
+    display: block;
+    height: 92px;
+    width: auto;
+}
+
+/* Default: Dark theme, show dark logo, hide light logo */
+.logo-light {
+    display: none;
+}
+.logo-dark {
+    display: block;
+}
+
+/* Light theme: Show light logo, hide dark logo */
+.light-theme .logo-light {
+    display: block;
+}
+.light-theme .logo-dark {
+    display: none;
+}
+
+/* Dark theme explicit rules (optional but clear) */
+.dark-theme .logo-light {
+    display: none;
+}
+.dark-theme .logo-dark {
+    display: block;
+}
+
+/* Search Box Styles */
+.search-container {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 2rem;
+}
+
+.search-box {
+    position: relative;
+    border-radius: 20px;
+    transition: all var(--transition-speed) ease;
+    display: flex;
+}
+
+.search-box-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px var(--card-shadow);
+    transition: all var(--transition-speed) ease;
+}
+
+/* Apply gradient only on focus */
+.search-box:focus-within {
+    background: var(--gradient-primary);
+    background-size: 300% 300%;
+    animation: gradientMove 6s ease infinite;
+    border-radius: 20px;
+    padding: var(--gradient-border-width);
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transform: translateY(-1px);
+}
+
+/* Adjust inner element border radius when parent has padding */
+.search-box:focus-within .search-box-inner {
+    border-radius: calc(20px - var(--gradient-border-width));
+    box-shadow: none;
+}
+
+.search-box i {
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-right: 0.5rem;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.search-box input::placeholder {
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+/* Header Right Side - Theme Toggle */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle {
+    position: relative;
+    margin-left: 0;
+    z-index: 100;
+}
+
+/* Popup Menu Styles - Positioned outside the header */
+.popup-menu {
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    width: 270px;
+    background: var(--card-bg);
+    z-index: 12000;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top left;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.5, 0, 0.1, 1);
+    overflow: hidden;
+    pointer-events: none;
+    border: 1px solid var(--border-color);
+    filter: drop-shadow(0 0 15px rgba(var(--primary-color-rgb), 0.3));
+}
+
+/* Only open menu with active class */
+.popup-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.popup-menu-section {
+    margin-bottom: 10px;
+}
+
+.popup-menu-section h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.popup-menu-links {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-menu-links li {
+    margin-bottom: 10px;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Change selector to target active menu instead of header-left.menu-active */
+.popup-menu.active .popup-menu-links li {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Staggered animation for menu items - update selectors */
+.popup-menu.active .popup-menu-links li:nth-child(1) { transition-delay: 0.05s; }
+.popup-menu.active .popup-menu-links li:nth-child(2) { transition-delay: 0.1s; }
+.popup-menu.active .popup-menu-links li:nth-child(3) { transition-delay: 0.15s; }
+.popup-menu.active .popup-menu-links li:nth-child(4) { transition-delay: 0.2s; }
+.popup-menu.active .popup-menu-links li:nth-child(5) { transition-delay: 0.25s; }
+.popup-menu.active .popup-menu-links li:nth-child(6) { transition-delay: 0.3s; }
+
+.popup-menu-links a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.popup-menu-links a:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    transform: translateX(5px);
+}
+
+.popup-menu-links i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 11000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.popup-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Animation for popup menu links */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Remove these now unused nav elements */
+.nav-links, .hamburger-menu, .bar {
+    display: none;
+}
+
+/* 
+=================================
+  Hero Section
+=================================
+*/
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+    border: var(--button-border-width) solid transparent;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn.secondary {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.btn.secondary:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* 
+=================================
+  Features Section
+=================================
+*/
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 20px;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0) scale(1); /* Set initial transform */
+}
+
+.feature-card:hover {
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 0 8px 16px var(--card-shadow) !important;
+    z-index: 2;
+}
+
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Dark theme shadow and glow effects */
+.dark-theme .feature-card:hover {
+    box-shadow: 0 8px 16px var(--dark-card-shadow), 0 0 15px rgba(var(--dark-primary-rgb), 0.1) !important;
+}
+
+.dark-theme .tilt-card:hover {
+    box-shadow: 0 8px 16px var(--dark-card-shadow), 0 0 15px rgba(var(--dark-primary-rgb), 0.1) !important;
+}
+
+.dark-theme .gradient-border-box:hover {
+    box-shadow: 0 8px 16px var(--dark-card-shadow), 0 0 15px rgba(var(--dark-primary-rgb), 0.1) !important;
+}
+
+/* 
+=================================
+  Card Section with Tilt
+=================================
+*/
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.cards-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tilt-card {
+    height: 300px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Only apply box-shadow on hover, let JS handle transform */
+.tilt-card:hover {
+    box-shadow: 0 8px 16px var(--card-shadow);
+    z-index: 2;
+}
+
+/* Card content needs transition for smooth effect, but should not transform */
+.tilt-card .card-content {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    transition: all 0.2s ease;
+}
+
+/* Dark theme shadow enhancement */
+.dark-theme .tilt-card {
+    box-shadow: 0 4px 10px var(--dark-card-shadow);
+}
+
+.dark-theme .tilt-card:hover {
+    box-shadow: 0 8px 20px var(--dark-hover-shadow), 0 0 15px rgba(var(--dark-primary-rgb), 0.3);
+}
+
+/* 
+=================================
+  Gradient Borders Section
+=================================
+*/
+.gradient-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 20px;
+}
+
+.gradient-border-box {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px var(--card-shadow);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0) scale(1);
+}
+
+.gradient-border-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius);
+    padding: var(--gradient-card-border-width);
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    background-size: 300% 300%;
+    animation: gradientMove 6s ease infinite;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+.box-content {
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Gradient border boxes - these don't have tilt.js applied */
+.gradient-border-box:hover {
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 0 8px 16px var(--card-shadow) !important;
+    z-index: 2;
+}
+
+/* 
+=================================
+  Footer
+=================================
+*/
+footer {
+    padding: 3rem 0;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    background-size: 150% 150%;
+    color: white;
+    transition: all var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-2px) rotate(8deg);
+    box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+/* 
+=================================
+  Responsive Design
+=================================
+*/
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .search-container {
+        max-width: 200px;
+        margin: 0 1rem;
+    }
+    
+    .popup-menu {
+        width: 220px;
+    }
+    
+    /* For touch devices, we need to handle click events in JS */
+    .header-left:hover .popup-menu {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    footer .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    #hero {
+        text-align: center;
+    }
+    
+    .hero-content {
+        margin: 0 auto;
+    }
+    
+    .btn-group {
+        justify-content: center;
+    }
+    
+    /* Fix theme toggle position on mobile */
+    .theme-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-left: 15px;
+    }
+    
+    /* Fix logo position when screen is narrow */
+    .logo {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .search-container {
+        max-width: 150px;
+        margin: 0 0.5rem;
+    }
+    
+    .search-box {
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .search-box input {
+        font-size: 0.85rem;
+    }
+    
+    .theme-toggle {
+        transform: scale(0.85);
+    }
+    
+    .popup-toggle {
+        transform: scale(0.85);
+    }
+
+    .logo {
+        margin-left: 0;
+        font-size: 1.6rem;
+    }
+
+    header .container {
+        padding-left: 15px;
+    }
+}
+
+/* Popup Toggle Button */
+.popup-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+}
+
+.popup-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+.popup-toggle i {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Add animation to the ellipsis icon when menu is active */
+.header-left.menu-active .popup-toggle i {
+    transform: rotate(90deg);
+}
+
+/* Common card transition for smoother elevation */
+.card-transition {
+    transition: transform var(--transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow var(--transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1),
+                border-color var(--transition-speed) ease;
+    will-change: transform, box-shadow;
+}
+
+/* Common card properties - refined default shadow */
+.card-common {
+    position: relative;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease !important;
+    overflow: hidden;
+    transform-origin: center bottom;
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    z-index: 1;
+    border: 1px solid transparent;
+}
+
+.card-common:hover {
+    z-index: 2;
+    border-color: transparent !important;
+}
+
+/* Add margin to grid containers to allow room for elevation */
+.features-grid, .cards-grid, .gradient-boxes {
+    margin-bottom: 20px;
+}
+
+/* Feature cards - these don't have the tilt.js applied */
+.feature-card:hover {
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 0 8px 16px var(--card-shadow) !important;
+    z-index: 2;
+}
+
+/* Dark theme shadow enhancements */
+.dark-theme .card-common:hover {
+    box-shadow: 0 8px 20px var(--dark-hover-shadow), 0 0 20px var(--dark-glow) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+    z-index: 2;
+}
+
+/* Separate rule for tilt cards in dark mode to avoid transform override */
+.dark-theme .tilt-card:hover {
+    box-shadow: 0 8px 20px var(--dark-hover-shadow), 0 0 20px var(--dark-glow) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    z-index: 2;
+}
+
+/* Ensure all card types have consistent hover effects with visible shadow and glow */
+.dark-theme .card-common:hover,
+.dark-theme .feature-card:hover,
+.dark-theme .gradient-border-box:hover {
+    box-shadow: 0 8px 20px var(--dark-hover-shadow), 0 0 20px var(--dark-glow) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+    z-index: 2;
+}
+
+/* Additional enhancement for spotlight effect in dark mode */
+.dark-theme .card-content::before {
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(var(--dark-primary-rgb), 0.25),
+        rgba(var(--dark-accent-rgb), 0.15) 40%,
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+/* Make the backdrop more visible in dark mode for depth */
+.dark-theme .popup-backdrop.active {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Card button styles */
+.card-btn {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    align-self: flex-start;
+}
+
+.card-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px var(--card-shadow);
+    color: white;
+}
+
+/* Ensure all card transforms are consistent between light and dark mode */
+.tilt-card, 
+.dark-theme .tilt-card {
+    transition: box-shadow 0.3s ease;
+    transform-style: preserve-3d !important;
+    will-change: transform !important;
+}
+
+/* Remove any hover transforms for tilt cards, let JS handle it */
+.tilt-card:hover,
+.dark-theme .tilt-card:hover {
+    transform: none !important;
+}
+
+/* Additional dark theme styles for tilt cards */
+.dark-theme .tilt-card {
+    box-shadow: 0 4px 10px var(--dark-card-shadow);
+}
+
+.dark-theme .tilt-card:hover {
+    box-shadow: 0 8px 20px var(--dark-hover-shadow), 0 0 15px rgba(var(--dark-primary-rgb), 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    z-index: 2;
+} 
