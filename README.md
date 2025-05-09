@@ -21,65 +21,77 @@ Open `index.html` in your browser to see all the effects in action.
 ├── index.html              # Main HTML file
 ├── index.js                # Main API for all effects
 ├── css/
-│   └── style.css           # All styles
+│   ├── style.css           # Main styles
+│   ├── style-css.css       # Additional CSS (purpose TBD)
+│   └── style-js-css.css    # Additional CSS (purpose TBD)
 ├── js/
 │   ├── particles.js        # Mouse-following particles
 │   ├── theme.js            # Theme switching
 │   ├── tilt.js             # 3D card tilt effect
+│   ├── tilt-js-css.js      # Helper for tilt effect? (purpose TBD)
 │   ├── gradients.js        # Animated gradient borders
-│   ├── menu.js             # Animated menu
-│   └── main.js             # Main application logic
+│   ├── menu.js             # Animated menu (includes MenuSystem)
+│   └── main.js             # Main application logic (observers, setup)
+├── data/                   # Data files (if any, contents TBD)
 └── README.md               # Documentation
 ```
+*(Note: `.git`, `.gitignore`, and `.DS_Store` are omitted for brevity)*
 
 ## How to Use
 
 ### Basic Usage
 
-Simply include the necessary files in your HTML:
+Include the necessary files in your HTML. The order might be important, especially loading component scripts before the main API (`index.js`).
 
 ```html
 <!-- CSS -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-css.css"> <!-- Verify necessity -->
+<link rel="stylesheet" href="css/style-js-css.css"> <!-- Verify necessity -->
 
-<!-- JavaScript -->
+<!-- JavaScript (Component Scripts First) -->
 <script src="js/particles.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/tilt.js"></script>
+<script src="js/tilt-js-css.js"></script> <!-- Verify necessity -->
 <script src="js/gradients.js"></script>
 <script src="js/menu.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js"></script> <!-- Handles main app logic -->
+
+<!-- Main API Script (After Components) -->
 <script src="index.js"></script>
 ```
 
 ### API Usage
 
-The project provides a clean API for controlling all effects:
+The project provides a clean API via the `DesignShowcase` object:
 
 ```javascript
-// Initialize with custom options
+// Initialize specific components with custom options (others use defaults)
 DesignShowcase.init({
-  particles: {
+  particles: { // Options for ParticleSystem
     particleCount: 50,
     particleColors: ['#ff0000', '#00ff00', '#0000ff']
   },
-  tiltEffect: {
+  tiltEffect: { // Options for TiltEffect
     maxTilt: 20,
-    glare: true
+    glareOpacity: 0.5 // Note: uses glareOpacity
+  },
+  gradientEffects: { // Options for GradientEffects
+    transitionSpeed: 0.8 
   }
+  // themeSwitcher and animatedMenu are also initialized by default
+  // Set to 'false' to disable: e.g., themeSwitcher: false
 });
 
-// Toggle theme
-DesignShowcase.theme.toggle();
-
-// Add more particles
-DesignShowcase.particles.add(10);
-
-// Update tilt settings
-DesignShowcase.tilt.updateSettings({
+// Example API calls
+DesignShowcase.theme.toggle();          // Toggle light/dark theme
+DesignShowcase.particles.add(10);       // Add 10 more particles
+DesignShowcase.tilt.updateSettings({    // Update tilt settings dynamically
   maxTilt: 25,
-  maxGlare: 0.5
+  glareOpacity: 0.6 
 });
+DesignShowcase.menu.open();             // Open the menu programmatically
 ```
 
 ## Effects Breakdown
